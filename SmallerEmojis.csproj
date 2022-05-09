@@ -1,0 +1,89 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net472</TargetFramework>
+        <LangVersion>latest</LangVersion>
+        <Version>0.1</Version>
+        <Authors>nonce-twice</Authors>
+        <VRChatDir>F:\SteamLibrary\steamapps\common\VRChat</VRChatDir>
+        <Mods>$(VRChatDir)\Mods</Mods>
+        <MelonLoader>$(VRChatDir)\MelonLoader</MelonLoader>
+        <MLManaged>$(MelonLoader)\Managed</MLManaged>
+        <Product />
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+      <WarningLevel>4</WarningLevel>
+      <OutputPath>$(MsBuildThisFileDirectory)\Output\Debug\</OutputPath>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+      <OutputPath>$(MsBuildThisFileDirectory)\Output\Release</OutputPath>
+    </PropertyGroup>
+    <ItemGroup>
+      <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <SpecificVersion>false</SpecificVersion>
+        <Private>false</Private>
+        <HintPath>$(MLManaged)\Assembly-CSharp.dll</HintPath>
+      </Reference> 
+      <Reference Include="Il2Cppmscorlib, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <SpecificVersion>false</SpecificVersion>
+        <Private>false</Private>
+        <HintPath>$(MLManaged)\Il2Cppmscorlib.dll</HintPath>
+      </Reference> 
+      <Reference Include="MelonLoader, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <SpecificVersion>false</SpecificVersion>
+        <Private>false</Private>
+        <HintPath>$(MelonLoader)\MelonLoader.dll</HintPath>
+      </Reference> 
+      <Reference Include="UIExpansionKit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <SpecificVersion>false</SpecificVersion>
+        <Private>false</Private>
+        <HintPath>$(Mods)\UIExpansionKit.dll</HintPath>
+      </Reference> 
+      <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <SpecificVersion>false</SpecificVersion>
+        <Private>false</Private>
+        <HintPath>$(MLManaged)\UnityEngine.dll</HintPath>
+      </Reference> 
+      <Reference Include="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <SpecificVersion>false</SpecificVersion>
+        <Private>false</Private>
+        <HintPath>$(MLManaged)\UnityEngine.CoreModule.dll</HintPath>
+      </Reference> 
+      <Reference Include="UnhollowerBaseLib, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <SpecificVersion>false</SpecificVersion>
+        <Private>false</Private>
+        <HintPath>$(MLManaged)\UnhollowerBaseLib.dll</HintPath>
+      </Reference> 
+      <Reference Include="VRCCore-Standalone, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <SpecificVersion>false</SpecificVersion>
+        <Private>false</Private>
+        <HintPath>$(MLManaged)\VRCCore-Standalone.dll</HintPath>
+      </Reference> 
+      <Reference Include="VRCSDK2, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <SpecificVersion>false</SpecificVersion>
+        <Private>false</Private>
+        <HintPath>$(MLManaged)\VRCSDK2.dll</HintPath>
+      </Reference> 
+      <Reference Include="VRCSDK3, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <SpecificVersion>false</SpecificVersion>
+        <Private>false</Private>
+        <HintPath>$(MLManaged)\VRCSDK3.dll</HintPath>
+      </Reference> 
+      <Reference Include="VRCSDK3A, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <SpecificVersion>false</SpecificVersion>
+        <Private>false</Private>
+        <HintPath>$(MLManaged)\VRCSDK3A.dll</HintPath>
+      </Reference> 
+      <Reference Include="VRCSDKBase, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <SpecificVersion>false</SpecificVersion>
+        <Private>false</Private>
+        <HintPath>$(MLManaged)\VRCSDKBase.dll</HintPath>
+      </Reference> 
+    </ItemGroup>
+    <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+      <Exec Command="copy /Y &quot;$(TargetDir)$(TargetName).dll&quot; &quot;$(VRChatDir)\Mods\$(TargetName).dll&quot;" />
+    </Target>
+
+</Project>
